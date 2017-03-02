@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.made.madevideomaker.MainActivity">
+    <View
+        android:id="@+id/anchor"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_centerInParent="true" />
+    <Button
+        android:text="@string/opennew"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/opennew"
+        android:layout_above="@+id/anchor"
+        android:layout_marginBottom="40dp"
+        android:layout_centerHorizontal="true"
+        android:onClick="videoActivity" />
+
+    <Button
+        android:text="@string/openold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/openold"
+        android:layout_below="@+id/anchor"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:onClick="reviewActivity" />
+</RelativeLayout>

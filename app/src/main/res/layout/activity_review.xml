@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_review"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context="com.made.madevideomaker.ReviewActivity">
+
+    <VideoView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/videoView"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true" />
+
+    <Button
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:id="@+id/playbut"
+        android:background="@drawable/btn_play" />
+
+    <Button
+        android:text="@string/keep"
+        android:layout_width="96dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/keepbut"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp" />
+
+    <Button
+        android:text="@string/redo"
+        android:layout_width="96dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/redobut"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_alignParentBottom="true" />
+
+</RelativeLayout>

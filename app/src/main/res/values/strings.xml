@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Made Video Maker</string>
+    <string name="opennew">Record New</string>
+    <string name="openold">Load Previous</string>
+    <string name="redo">Redo</string>
+    <string name="keep">Keep</string>
+</resources>

@@ -1,0 +1,7 @@
+#Wed Mar 01 15:25:29 MST 2017
+base.0=/home/z/AndroidStudioProjects/MadeVideoMaker/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_79e1054e90dcb99502d0e68a838d7d1be9f95fa1
+renamed.1=classes2.dex
+renamed.0=classes.dex
+file.1=/home/z/AndroidStudioProjects/MadeVideoMaker/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_1c0ae69abc59f32ccdaaa66b8fa3d8880fd679ce/classes.dex
+base.1=/home/z/AndroidStudioProjects/MadeVideoMaker/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_1c0ae69abc59f32ccdaaa66b8fa3d8880fd679ce
+file.0=/home/z/AndroidStudioProjects/MadeVideoMaker/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_79e1054e90dcb99502d0e68a838d7d1be9f95fa1/classes.dex
