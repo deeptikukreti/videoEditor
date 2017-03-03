@@ -4,19 +4,13 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
-import android.content.res.Configuration;
 import android.graphics.ImageFormat;
 import android.hardware.Camera;
-import android.hardware.Sensor;
-import android.hardware.SensorEvent;
-import android.hardware.SensorEventListener;
-import android.hardware.SensorManager;
 import android.media.CamcorderProfile;
 import android.media.MediaRecorder;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Display;
@@ -37,12 +31,12 @@ import static android.media.MediaRecorder.OutputFormat.MPEG_4;
 import static android.media.MediaRecorder.VideoEncoder.MPEG_4_SP;
 
 
-public class VideoActivity extends AppCompatActivity implements SensorEventListener {
+public class VideoActivity extends AppCompatActivity {
 
     /**
      * Var initialization
      */
-    private static final String TAG = "CameraActivity";
+    private static final String TAG = "VideoActivity";
 
     private SurfaceView preview;
     private SurfaceHolder previewHolder = null;
@@ -51,15 +45,8 @@ public class VideoActivity extends AppCompatActivity implements SensorEventListe
     private boolean cameraConfigured = false;
     private int cam = 0;
     private boolean pressed = false;
-    private int degrees = 0;
-    SensorManager sm;
+    private int degrees = 90;
     WindowManager mWindowManager;
-
-    public int mOrientationDeg;
-    private static final int _DATA_X = 0;
-    private static final int _DATA_Y = 1;
-    private static final int _DATA_Z = 2;
-    int ORIENTATION_UNKNOWN = -1;
 
     private int screenWidth;
     private int screenHeight;
@@ -125,18 +112,17 @@ public class VideoActivity extends AppCompatActivity implements SensorEventListe
                         });
                     }
                 } catch (InterruptedException e) {
+                    Log.d(TAG, "Thread interrupt exception.");
                 }
             }
         };
 
+        /** Lock display orientation */
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT);
+
         /** Camera parameter initialization */
-        sm = (SensorManager) getSystemService(SENSOR_SERVICE);
-        if (sm.getSensorList(Sensor.TYPE_ACCELEROMETER).size() != 0) {
-            Sensor s = sm.getSensorList(Sensor.TYPE_ACCELEROMETER).get(0);
-            sm.registerListener(this, s, SensorManager.SENSOR_DELAY_NORMAL);
-        }
         mWindowManager = (WindowManager) getSystemService(WINDOW_SERVICE);
-        boolean isFrontCamera = false;
+        boolean isFrontCamera;
         if (Camera.getNumberOfCameras() > 1) {
             flipCamera.setVisibility(View.VISIBLE);
             isFrontCamera = true;
@@ -179,7 +165,12 @@ public class VideoActivity extends AppCompatActivity implements SensorEventListe
                         mOutputFile.delete();
                         pressed = false;
                     }
+                    try{
                     t.interrupt();
+                    } catch (Exception e){
+                        Log.d(TAG, "Thread interrupt exception.");
+                    }
+
                     releaseMediaRecorder();
                     releaseCamera();
                     Intent reviewIntent = new Intent(VideoActivity.this, ReviewActivity.class);
@@ -189,14 +180,11 @@ public class VideoActivity extends AppCompatActivity implements SensorEventListe
                     startActivity(reviewIntent);
                     finish();
                 }else {
-                    int currentOrientation = getResources().getConfiguration().orientation;
-                    if (currentOrientation == Configuration.ORIENTATION_LANDSCAPE) {
-                        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
+                    try {
+                        t.start();
+                    }catch (IllegalThreadStateException e){
+                        Log.d(TAG,"Thread State Exception.");
                     }
-                    else {
-                        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT);
-                    }
-                    t.start();
                     captureButton.setBackground(getResources().getDrawable(R.drawable.btn_stop));
                     flipCamera.setVisibility(View.INVISIBLE);
                     new MediaPrepareTask().execute(null,null,null);
@@ -231,18 +219,17 @@ public class VideoActivity extends AppCompatActivity implements SensorEventListe
                 degrees = 270;
                 break;
         }
-        int result;
         if (info.facing == Camera.CameraInfo.CAMERA_FACING_FRONT) {
-            result = (info.orientation + degrees) % 360;
-            result = (360 - result) % 360;  // compensate the mirror
+            degrees = (info.orientation + degrees) % 360;
+            degrees = (360 - degrees) % 360;  // compensate the mirror
         } else {  // back-facing
-            result = (info.orientation - degrees + 360) % 360;
+            degrees = (info.orientation - degrees + 360) % 360;
         }
-        camera.setDisplayOrientation(result);
+        camera.setDisplayOrientation(degrees);
     }
 
     /**
-     * Set Camera Surface View controls (initalize,pause,update,async)/options
+     * Set Camera Surface View state responses(initalize,pause,update,async)/options
      */
     @Override
     public void onResume() {
@@ -283,6 +270,7 @@ public class VideoActivity extends AppCompatActivity implements SensorEventListe
         inPreview = false;
         super.onPause();
     }
+
     /** Pull camera parameters */
     private Camera.Size getBestPreviewSize(int height,
                                            Camera.Parameters parameters) {
@@ -311,6 +299,7 @@ public class VideoActivity extends AppCompatActivity implements SensorEventListe
         }
         return optimalSize;
     }
+
     /** Initialize preview parameters */
     private void initPreview(int height) {
         if (camera != null && previewHolder.getSurface() != null) {
@@ -348,6 +337,7 @@ public class VideoActivity extends AppCompatActivity implements SensorEventListe
                             parameters.setWhiteBalance(Camera.Parameters.WHITE_BALANCE_AUTO);
                         }
                     }
+                    setCameraDisplayOrientation(this,cam,camera);
                     cameraConfigured = true;
                     camera.setParameters(parameters);
                 }
@@ -372,7 +362,6 @@ public class VideoActivity extends AppCompatActivity implements SensorEventListe
     }
     private void startPreview() {
         if (cameraConfigured && camera != null) {
-            setCameraDisplayOrientation(this,cam,camera);
             camera.startPreview();
             inPreview = true;
         }
@@ -391,7 +380,7 @@ public class VideoActivity extends AppCompatActivity implements SensorEventListe
         }
         public void surfaceDestroyed(SurfaceHolder holder) {
             if (camera != null) {
-                if(inPreview && camera!=null) {
+                if(inPreview) {
                     camera.stopPreview();
                 }
                 inPreview = false;
@@ -403,69 +392,8 @@ public class VideoActivity extends AppCompatActivity implements SensorEventListe
     @Override
     protected void onDestroy() {
         // Stop listening to sensor
-        sm.unregisterListener(this);
+        //sm.unregisterListener(this);
         super.onDestroy();
-    }
-    @Override
-    public void onSensorChanged(SensorEvent event) {
-
-        if (event.sensor.getType() == Sensor.TYPE_ACCELEROMETER) {
-            float[] values = event.values;
-            int orientation = ORIENTATION_UNKNOWN;
-            float X = -values[_DATA_X];
-            float Y = -values[_DATA_Y];
-            float Z = -values[_DATA_Z];
-            float magnitude = X * X + Y * Y;
-            // Don't trust the angle if the magnitude is small compared to the y value
-            if (magnitude * 4 >= Z * Z) {
-                float OneEightyOverPi = 57.29577957855f;
-                float angle = (float) Math.atan2(-Y, X) * OneEightyOverPi;
-                orientation = 90 - Math.round(angle);
-                // normalize to 0 - 359 range
-                while (orientation >= 360) {
-                    orientation -= 360;
-                }
-                while (orientation < 0) {
-                    orientation += 360;
-                }
-            }
-            //^^ thanks to google for that code
-            //now we must figure out which orientation based on the degrees
-            if (orientation != mOrientationDeg) {
-                mOrientationDeg = orientation;
-                //figure out actual orientation
-                if (orientation == -1) {//basically flat
-                    if (cam == 1) {
-                        degrees = 270;
-                    } else {
-                        degrees = 90;
-                    }
-                } else if (orientation <= 45 || orientation > 315) {//round to 0
-                    if (cam == 1) {
-                        degrees = 270;
-                    } else {
-                        degrees = 90;
-                    }
-                } else if (orientation > 45 && orientation <= 135) {//round to 90
-                    degrees = 180;
-//                    RotateAnimation a = new RotateAnimation(0, 90, 34, 34);
-                } else if (orientation > 135 && orientation <= 225) {//round to 180
-                    if (cam == 1) {
-                        degrees = 90;
-                    } else {
-                        degrees = 270;
-                    }
-                } else if (orientation > 225 && orientation <= 315) {//round to 270
-                    degrees = 0;
-                }
-            }
-
-        }
-    }
-
-    @Override
-    public void onAccuracyChanged(Sensor sensor, int accuracy) {
-        // TODO Auto-generated method stub
     }
 
     /** Media recorder initialization/options */
@@ -478,7 +406,9 @@ public class VideoActivity extends AppCompatActivity implements SensorEventListe
             mediarecorder = null;
             // Lock camera for later use i.e taking it back from MediaRecorder.
             // MediaRecorder doesn't need it anymore and we will release it if the activity pauses.
-            camera.lock();
+            if (camera != null) {
+                camera.lock();
+            }
         }
     }
 
@@ -493,20 +423,7 @@ public class VideoActivity extends AppCompatActivity implements SensorEventListe
 
     @TargetApi(Build.VERSION_CODES.HONEYCOMB)
     private boolean prepareVideoRecorder(){
-        // We need to make sure that our preview and recording video size are supported by the
-        // camera. Query camera to find all the sizes and choose the optimal size given the
-        // dimensions of our preview surface.
-        Camera.Parameters p = camera.getParameters();
-        p.setRotation(degrees);
-        p.setFocusMode(Camera.Parameters.FOCUS_MODE_CONTINUOUS_VIDEO);
-        p.set("cam_mode",1);
-        camera.setParameters(p);
-        // END_INCLUDE (configure_preview)
-
-
-        // BEGIN_INCLUDE (configure_media_recorder)
         mediarecorder = new MediaRecorder();
-
 
         // Step 1: Unlock and set camera to MediaRecorder
         try {
@@ -515,9 +432,15 @@ public class VideoActivity extends AppCompatActivity implements SensorEventListe
             Log.d(TAG,"Runtime Exception: ",e);
         }
         mediarecorder.setCamera(camera);
-
         mediarecorder.setVideoSource(MediaRecorder.VideoSource.CAMERA);
         mediarecorder.setAudioSource(MediaRecorder.AudioSource.DEFAULT);
+        if(cam!=0) {
+            if (degrees < 180) {
+                degrees += 180;
+            } else {
+                degrees -= 180;
+            }
+        }
         mediarecorder.setOrientationHint(degrees);
         mediarecorder.setMaxDuration(durationint);
         mediarecorder.setOnInfoListener(new MediaRecorder.OnInfoListener() {
@@ -598,20 +521,8 @@ class MediaPrepareTask extends AsyncTask<Void, Void, Boolean> {
         if (!result) {
             VideoActivity.this.finish();
         }
-        // inform the user that recording has started
 
     }
 }
 
-    private void messageBox(String method, String message)
-    {
-        Log.d("EXCEPTION: " + method,  message);
-
-        AlertDialog.Builder messageBox = new AlertDialog.Builder(this);
-        messageBox.setTitle(method);
-        messageBox.setMessage(message);
-        messageBox.setCancelable(false);
-        messageBox.setNeutralButton("OK", null);
-        messageBox.show();
-    }
 }

@@ -2,112 +2,112 @@
 <items version="2" >
 
     <item
-        is-multidex="true"
-        jar="/home/z/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/25.1.1/support-annotations-25.1.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="b59b6ee8d6ecc03e672d253800430343493a6ed8">
-        <dex dex="/home/z/AndroidStudioProjects/MadeVideoMaker/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-25.1.1_2b4a8b6aff2dc1cbb1e5b54d77f34651966d7e03/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
+        is-multidex="false"
         jar="/home/z/AndroidStudioProjects/MadeVideoMaker/app/build/intermediates/exploded-aar/com.android.support/support-media-compat/25.1.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
         sha1="7bde4c34162092e0a77e7f12dc85ed77c484cf5c">
-        <dex dex="/home/z/AndroidStudioProjects/MadeVideoMaker/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-media-compat-25.1.1_24b412ce2356517899f68c4c24d217d0f47a382b/classes.dex" />
+        <dex dex="/home/z/AndroidStudioProjects/MadeVideoMaker/app/build/intermediates/pre-dexed/debug/com.android.support-support-media-compat-25.1.1_24b412ce2356517899f68c4c24d217d0f47a382b.jar" />
     </item>
     <item
-        is-multidex="true"
-        jar="/home/z/AndroidStudioProjects/MadeVideoMaker/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/25.1.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="0d191c1a09e4892d059e5ce749e4ad4e08129e35">
-        <dex dex="/home/z/AndroidStudioProjects/MadeVideoMaker/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-25.1.1_83419b2c57769ba6cfe7688c8a21538a6c5bc288/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/z/AndroidStudioProjects/MadeVideoMaker/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/25.1.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="c03bf57f358aa10d253f21989e93bcf6014b3b17">
-        <dex dex="/home/z/AndroidStudioProjects/MadeVideoMaker/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-25.1.1_532c15210f69e95102519f13ba97ccaf3ff72b27/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
+        is-multidex="false"
         jar="/home/z/AndroidStudioProjects/MadeVideoMaker/app/build/intermediates/exploded-aar/com.android.support/support-v4/25.1.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
         sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="/home/z/AndroidStudioProjects/MadeVideoMaker/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-25.1.1_b74ecdbfd26df4563d4d82567ac6ba73756999f6/classes.dex" />
+        <dex dex="/home/z/AndroidStudioProjects/MadeVideoMaker/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-25.1.1_b74ecdbfd26df4563d4d82567ac6ba73756999f6.jar" />
     </item>
     <item
-        is-multidex="true"
-        jar="/home/z/AndroidStudioProjects/MadeVideoMaker/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        is-multidex="false"
+        jar="/home/z/AndroidStudioProjects/MadeVideoMaker/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/25.1.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="a53cf3e5f9b4fa54c1c5c38455eb43adfdd17134">
-        <dex dex="/home/z/AndroidStudioProjects/MadeVideoMaker/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_79e1054e90dcb99502d0e68a838d7d1be9f95fa1/classes.dex" />
+        sha1="0d191c1a09e4892d059e5ce749e4ad4e08129e35">
+        <dex dex="/home/z/AndroidStudioProjects/MadeVideoMaker/app/build/intermediates/pre-dexed/debug/com.android.support-animated-vector-drawable-25.1.1_83419b2c57769ba6cfe7688c8a21538a6c5bc288.jar" />
     </item>
     <item
-        is-multidex="true"
-        jar="/home/z/AndroidStudioProjects/MadeVideoMaker/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.1.1/jars/classes.jar"
+        is-multidex="false"
+        jar="/home/z/AndroidStudioProjects/MadeVideoMaker/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/25.1.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="02741d05d4b697fba5e279e9881aaa1da0ca7c7f">
-        <dex dex="/home/z/AndroidStudioProjects/MadeVideoMaker/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-compat-25.1.1_63b5aa199ecc39d7cd1870e334224ed44a6fe0ed/classes.dex" />
+        sha1="c03bf57f358aa10d253f21989e93bcf6014b3b17">
+        <dex dex="/home/z/AndroidStudioProjects/MadeVideoMaker/app/build/intermediates/pre-dexed/debug/com.android.support-support-vector-drawable-25.1.1_532c15210f69e95102519f13ba97ccaf3ff72b27.jar" />
     </item>
     <item
-        is-multidex="true"
-        jar="/home/z/AndroidStudioProjects/MadeVideoMaker/app/build/intermediates/exploded-aar/com.android.support/support-fragment/25.1.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="e2719c102dca3a7a5b02ce07f769362da6ddb4ab">
-        <dex dex="/home/z/AndroidStudioProjects/MadeVideoMaker/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-fragment-25.1.1_cc273a610d94b22a4d5c1c1829b361dc68e31579/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/z/AndroidStudioProjects/MadeVideoMaker/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="ecb496cc08dd52551fc5ec6db3bc0632e95a89bb">
-        <dex dex="/home/z/AndroidStudioProjects/MadeVideoMaker/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-25.1.1_bb39b6f5b9427651fd785b70cdf10a03fb273519/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/z/AndroidStudioProjects/MadeVideoMaker/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.0"
-        sha1="cd19a4fc1447f5e6b26f94df7ce0bfed01a2b797">
-        <dex dex="/home/z/AndroidStudioProjects/MadeVideoMaker/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_1c0ae69abc59f32ccdaaa66b8fa3d8880fd679ce/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
+        is-multidex="false"
         jar="/home/z/AndroidStudioProjects/MadeVideoMaker/app/build/intermediates/exploded-aar/com.android.support/support-core-ui/25.1.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
         sha1="3e04ac8ca644ea7baddf6fdcf72e15c79e9df94a">
-        <dex dex="/home/z/AndroidStudioProjects/MadeVideoMaker/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-ui-25.1.1_5f7325d16663137cc697a680470aaccde952dda8/classes.dex" />
+        <dex dex="/home/z/AndroidStudioProjects/MadeVideoMaker/app/build/intermediates/pre-dexed/debug/com.android.support-support-core-ui-25.1.1_5f7325d16663137cc697a680470aaccde952dda8.jar" />
     </item>
     <item
-        is-multidex="true"
+        is-multidex="false"
+        jar="/home/z/AndroidStudioProjects/MadeVideoMaker/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.1.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="ecb496cc08dd52551fc5ec6db3bc0632e95a89bb">
+        <dex dex="/home/z/AndroidStudioProjects/MadeVideoMaker/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-25.1.1_bb39b6f5b9427651fd785b70cdf10a03fb273519.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/z/AndroidStudioProjects/MadeVideoMaker/app/build/intermediates/exploded-aar/com.android.support/support-fragment/25.1.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="e2719c102dca3a7a5b02ce07f769362da6ddb4ab">
+        <dex dex="/home/z/AndroidStudioProjects/MadeVideoMaker/app/build/intermediates/pre-dexed/debug/com.android.support-support-fragment-25.1.1_cc273a610d94b22a4d5c1c1829b361dc68e31579.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/z/AndroidStudioProjects/MadeVideoMaker/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="1d6a81c381294a3ae2fb49942d24106b469a10e5">
+        <dex dex="/home/z/AndroidStudioProjects/MadeVideoMaker/app/build/intermediates/pre-dexed/debug/instant-run_1c0ae69abc59f32ccdaaa66b8fa3d8880fd679ce.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/z/AndroidStudioProjects/MadeVideoMaker/app/build/intermediates/exploded-aar/com.android.support/support-compat/25.1.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="02741d05d4b697fba5e279e9881aaa1da0ca7c7f">
+        <dex dex="/home/z/AndroidStudioProjects/MadeVideoMaker/app/build/intermediates/pre-dexed/debug/com.android.support-support-compat-25.1.1_63b5aa199ecc39d7cd1870e334224ed44a6fe0ed.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="/home/z/AndroidStudioProjects/MadeVideoMaker/app/build/intermediates/exploded-aar/com.android.support/support-core-utils/25.1.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
         sha1="0fb891e8f0cfba0513043a7bb357513d229ca2cd">
-        <dex dex="/home/z/AndroidStudioProjects/MadeVideoMaker/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-core-utils-25.1.1_4a3406bbffe65042e3dfc55a81b9eef1b093d4a4/classes.dex" />
+        <dex dex="/home/z/AndroidStudioProjects/MadeVideoMaker/app/build/intermediates/pre-dexed/debug/com.android.support-support-core-utils-25.1.1_4a3406bbffe65042e3dfc55a81b9eef1b093d4a4.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/z/AndroidStudioProjects/MadeVideoMaker/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="ecaf0735ad694e2daac453192196afbb5ba61b90">
+        <dex dex="/home/z/AndroidStudioProjects/MadeVideoMaker/app/build/intermediates/pre-dexed/debug/instant-run-bootstrap_79e1054e90dcb99502d0e68a838d7d1be9f95fa1.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/z/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/25.1.1/support-annotations-25.1.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.0"
+        sha1="b59b6ee8d6ecc03e672d253800430343493a6ed8">
+        <dex dex="/home/z/AndroidStudioProjects/MadeVideoMaker/app/build/intermediates/pre-dexed/debug/support-annotations-25.1.1_2b4a8b6aff2dc1cbb1e5b54d77f34651966d7e03.jar" />
     </item>
 
 </items>

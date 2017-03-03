@@ -1,12 +1,14 @@
 package com.made.madevideomaker;
 
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
 import android.media.ThumbnailUtils;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.VideoView;
@@ -16,6 +18,7 @@ import android.widget.VideoView;
 public class ReviewActivity extends AppCompatActivity{
 
 
+    private static final String TAG = "ReviewActivity";
     boolean pressed = false;
     String filepath;
     String filename;
@@ -23,6 +26,9 @@ public class ReviewActivity extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+        /** Lock display orientation */
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_PORTRAIT);
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_review);
@@ -62,10 +68,15 @@ public class ReviewActivity extends AppCompatActivity{
                         });
                     }
                 } catch (InterruptedException e) {
+                    Log.d(TAG, "Thread interrupt exception.");
                 }
             }
         };
-        t.start();
+        try{
+            t.start();
+        }catch(Exception e){
+            Log.d(TAG, "Start thread exception.");
+        }
 
 
         /** Video play/stop button */
@@ -115,7 +126,6 @@ public class ReviewActivity extends AppCompatActivity{
 
     public void playbackRecordedVideo(){
         mVideoView.setVideoPath(filepath + "/" + filename);
-        //mVideoView.setMediaController(new MediaController(this));
         mVideoView.requestFocus();
         mVideoView.start();
     }
